@@ -1,0 +1,11 @@
+- name: Configure Autologin for SDDM
+  ansible.builtin.blockinfile:
+    path: /etc/sddm.conf.d/autologin.conf
+    create: true
+    mode: "0660"
+    block: |
+      [Autologin]
+      User={{ autologin_username }}
+      Session={{ autologin_session }}
+  when: autologin_username is defined and autologin_session is defined
+  become: true

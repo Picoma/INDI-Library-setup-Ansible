@@ -1,0 +1,7 @@
+- name: Setup My System
+  hosts: telescope
+  roles:
+    - install_indi
+    - install_xrdp
+    - configure_autologin
+    - create_hotspot

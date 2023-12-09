@@ -1,0 +1,19 @@
+- name: Add xrdp PPA repository
+  ansible.builtin.apt_repository:
+    repo: 'ppa:saxl/xrdp-egfx'
+    state: present
+  become: true
+
+- name: Install xrdp-egfx and xorgxrdp-egfx
+  ansible.builtin.apt:
+    name: xrdp-egfx, xorgxrdp-egfx
+    state: present
+    update_cache: true
+  become: true
+
+- name: Enable xrdp service
+  ansible.builtin.systemd:
+    name: xrdp
+    enabled: true
+    state: started
+  become: true

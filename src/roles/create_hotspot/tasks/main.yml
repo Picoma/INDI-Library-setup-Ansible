@@ -1,0 +1,16 @@
+- name: Create a WiFi Hotspot
+  community.general.nmcli:
+    type: wifi
+    conn_name: "{{ ap_ssid }}"
+    ssid: "{{ ap_ssid }}"
+
+    wifi:
+      hidden: false
+      mode: ap
+    autoconnect: true
+
+    method4: shared
+    method6: auto
+    addr_gen_mode6: stable-privacy
+
+    state: present

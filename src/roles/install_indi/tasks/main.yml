@@ -1,0 +1,12 @@
+- name: Add Indi PPA repository
+  ansible.builtin.apt_repository:
+    repo: 'ppa:mutlaqja/ppa'
+    state: present
+  become: true
+
+- name: Install Indi and KStars
+  ansible.builtin.apt:
+    name: indi-full, kstars
+    state: present
+    update_cache: true
+  become: true
